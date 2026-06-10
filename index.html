@@ -85,7 +85,7 @@ section{padding:80px 5%}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:48px}
 .fcard{background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;position:relative}
 .fcard:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(232,32,26,0.22)}
-.fcard-img{height:220px;background:#1a0d06;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06)}
+.fcard-img{height:196px;background:radial-gradient(circle at 50% 38%,rgba(245,197,24,0.12) 0%,transparent 55%),linear-gradient(135deg,#2a1508,#1a0d06);position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06)}
 .fcard-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:linear-gradient(to top,var(--dark3),transparent);pointer-events:none;z-index:1}
 .fcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
 .fcard:hover .fcard-img img{transform:scale(1.06)}
@@ -116,13 +116,15 @@ section{padding:80px 5%}
 .cat-btn.active,.cat-btn:hover{background:linear-gradient(135deg,var(--red),var(--orange));border-color:transparent;color:#fff}
 .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;display:none}
 .mgrid.show{display:grid}
-.mitem{background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:0;display:flex;flex-direction:column;align-items:stretch;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;cursor:pointer}
-.mitem:hover{border-color:rgba(232,32,26,0.35);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.35)}
-.mphoto{width:100%;height:168px;overflow:hidden;background:#1f0f06;flex-shrink:0;position:relative}
-.mphoto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.35s}
-.mitem:hover .mphoto img{transform:scale(1.07)}
-.mbody{padding:14px;display:flex;flex-direction:column;flex:1}
-.micon{display:none}
+.mitem{background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:11px;padding:13px;display:flex;align-items:center;gap:11px;transition:all 0.2s;cursor:pointer}
+.mitem:hover{border-color:rgba(232,32,26,0.3);transform:translateX(3px)}
+.mitem.mitem-photo{flex-direction:column;align-items:stretch;padding:0;border-radius:14px;overflow:hidden}
+.mitem.mitem-photo:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.35)}
+.mphoto{width:100%;height:168px;overflow:hidden;background:#1f0f06;flex-shrink:0}
+.mphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.mitem-photo .mbody{padding:14px;display:flex;flex-direction:column;flex:1}
+.mitem-photo .mright{flex-direction:row;align-items:center;justify-content:space-between;width:100%;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06)}
+.micon{width:52px;height:52px;border-radius:10px;background:linear-gradient(145deg,#321808,#1f0f06);border:1px solid rgba(245,197,24,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:24px}
 .minfo{flex:1;min-width:0}
 .mname{font-size:13px;font-weight:800;color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #m-pizza .mname{white-space:normal}
@@ -142,7 +144,7 @@ section{padding:80px 5%}
 .menu-prices{font-size:10px;font-weight:700;color:var(--yellow);letter-spacing:0.3px;text-transform:none}
 .mtag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:0.7px;text-transform:uppercase;background:rgba(245,197,24,0.12);color:var(--yellow);border:1px solid rgba(245,197,24,0.3);padding:2px 8px;border-radius:10px}
 #m-pizza.mgrid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-.mitem .mright{display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);gap:8px;flex-shrink:0}
+.mright{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0}
 .mprice{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--yellow)}
 .madd{background:linear-gradient(135deg,var(--red),var(--orange));color:#fff;border:none;width:26px;height:26px;border-radius:5px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:800}
 
@@ -434,10 +436,10 @@ section{padding:56px 5%}
     <p class="ssub">Our highest-selling picks every month — the favourites Mahua orders again and again.</p>
     <div class="tgrid">
       <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge gold">#1 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Strips (Large)</h3><p>Hand-breaded crispy strips — our #1 revenue earner, loved with fries or on the go.</p><div class="fcard-foot"><span class="fprice">₹150</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge silver">#2 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Samosa</h3><p>Crispy pastry stuffed with spiced chicken — a Mahua snack-time favourite.</p><div class="fcard-foot"><span class="fprice">₹35</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge bronze">#3 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Cold Coffee</h3><p>Chilled café-style cold coffee — the perfect pairing with fried chicken.</p><div class="fcard-foot"><span class="fprice">₹69</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge">#4 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Kathi Roll</h3><p>Street-style chicken kathi roll — quick, filling, and full of flavour.</p><div class="fcard-foot"><span class="fprice">₹79</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge">#5 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Afgani Roll</h3><p>Creamy afgani chicken wrapped fresh — rich, indulgent, and always in demand.</p><div class="fcard-foot"><span class="fprice">₹89</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller" data-photo="samosa"><div class="fcard-img"><div class="fbadge silver">#2 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Samosa</h3><p>Crispy pastry stuffed with spiced chicken — a Mahua snack-time favourite.</p><div class="fcard-foot"><span class="fprice">₹35</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller" data-photo="cold-coffee"><div class="fcard-img"><div class="fbadge bronze">#3 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Cold Coffee</h3><p>Chilled café-style cold coffee — the perfect pairing with fried chicken.</p><div class="fcard-foot"><span class="fprice">₹69</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller" data-photo="roll-kathi"><div class="fcard-img"><div class="fbadge">#4 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Kathi Roll</h3><p>Street-style chicken kathi roll — quick, filling, and full of flavour.</p><div class="fcard-foot"><span class="fprice">₹79</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller" data-photo="roll-afgani"><div class="fcard-img"><div class="fbadge">#5 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Afgani Roll</h3><p>Creamy afgani chicken wrapped fresh — rich, indulgent, and always in demand.</p><div class="fcard-foot"><span class="fprice">₹89</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
     </div>
   </div>
 </section>
@@ -462,15 +464,15 @@ section{padding:56px 5%}
       <button class="cat-btn" onclick="showMenu('combos',this)">🎁 Value Meals</button>
     </div>
     <div id="m-chicken" class="mgrid show">
-      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">2pcs Fried Chicken</div><div class="mdesc">Crispy golden fried chicken — perfect for one.</div></div><div class="mright"><span class="mprice">₹179</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">4pcs Fried Chicken</div><div class="mdesc">Shareable portion of our signature fried chicken.</div></div><div class="mright"><span class="mprice">₹349</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🪣</div><div class="minfo"><div class="mname">8pcs Fried Chicken</div><div class="mdesc">Family-size bucket of crispy fried chicken.</div></div><div class="mright"><span class="mprice">₹689</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="chicken"><div class="micon">🍗</div><div class="minfo"><div class="mname">2pcs Fried Chicken</div><div class="mdesc">Crispy golden fried chicken — perfect for one.</div></div><div class="mright"><span class="mprice">₹179</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="chicken"><div class="micon">🍗</div><div class="minfo"><div class="mname">4pcs Fried Chicken</div><div class="mdesc">Shareable portion of our signature fried chicken.</div></div><div class="mright"><span class="mprice">₹349</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="chicken"><div class="micon">🪣</div><div class="minfo"><div class="mname">8pcs Fried Chicken</div><div class="mdesc">Family-size bucket of crispy fried chicken.</div></div><div class="mright"><span class="mprice">₹689</span><button class="madd" onclick="addCart(this)">+</button></div></div>
       <div class="mitem top-seller"><div class="micon"></div><div class="minfo"><div class="mname">Chicken Strips (Large)</div><div class="mtop">🏆 #1 Monthly Bestseller</div><div class="mdesc">Hand-breaded crispy chicken strips.</div></div><div class="mright"><span class="mprice">₹150</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem top-seller"><div class="micon"></div><div class="minfo"><div class="mname">Chicken Samosa</div><div class="mtop">🥈 #2 Monthly Bestseller</div><div class="mdesc">Crispy pastry with spiced chicken filling.</div></div><div class="mright"><span class="mprice">₹35</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller" data-photo="samosa"><div class="micon"></div><div class="minfo"><div class="mname">Chicken Samosa</div><div class="mtop">🥈 #2 Monthly Bestseller</div><div class="mdesc">Crispy pastry with spiced chicken filling.</div></div><div class="mright"><span class="mprice">₹35</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-burgers" class="mgrid">
-      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Burger</div><div class="mdesc">Classic crispy chicken burger.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Cheese Burger</div><div class="mdesc">Crispy chicken with melted cheese.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="burger"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Burger</div><div class="mdesc">Classic crispy chicken burger.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="burger"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Cheese Burger</div><div class="mdesc">Crispy chicken with melted cheese.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-sandwich" class="mgrid">
       <div class="mitem"><div class="micon">🥪</div><div class="minfo"><div class="mname">Veg Corn</div><div class="mdesc">Sweet corn sandwich — light &amp; tasty.</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
@@ -512,18 +514,18 @@ section{padding:56px 5%}
       <div class="mitem"><div class="micon">🍄</div><div class="minfo"><div class="mname">Extra Toppings</div><div class="mdesc">Load up with extra toppings on any pizza.</div><div class="msizes"><em>6"</em> ₹25 · <em>8"</em> ₹35 · <em>10"</em> ₹50</div></div><div class="mright"><span class="mprice">₹25</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-momos" class="mgrid">
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Half Veg Momos</div><div class="mdesc">Steamed veg dumplings — half plate.</div></div><div class="mright"><span class="mprice">₹39</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Full Veg Momos</div><div class="mdesc">Steamed veg dumplings — full plate.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Half Chicken Momos</div><div class="mdesc">Juicy chicken dumplings — half plate.</div></div><div class="mright"><span class="mprice">₹49</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Full Chicken Momos</div><div class="mdesc">Juicy chicken dumplings — full plate.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="momos"><div class="micon">🥟</div><div class="minfo"><div class="mname">Half Veg Momos</div><div class="mdesc">Steamed veg dumplings — half plate.</div></div><div class="mright"><span class="mprice">₹39</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="momos"><div class="micon">🥟</div><div class="minfo"><div class="mname">Full Veg Momos</div><div class="mdesc">Steamed veg dumplings — full plate.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="momos"><div class="micon">🥟</div><div class="minfo"><div class="mname">Half Chicken Momos</div><div class="mdesc">Juicy chicken dumplings — half plate.</div></div><div class="mright"><span class="mprice">₹49</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="momos"><div class="micon">🥟</div><div class="minfo"><div class="mname">Full Chicken Momos</div><div class="mdesc">Juicy chicken dumplings — full plate.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-rolls" class="mgrid">
       <div class="mitem"><div class="micon">🌯</div><div class="minfo"><div class="mname">Veg Cheese Roll</div><div class="mdesc">Veg filling with melted cheese.</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem top-seller"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Kathi Roll</div><div class="mtop">#4 Monthly Bestseller</div><div class="mdesc">Street-style chicken kathi roll.</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem top-seller"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Afgani Roll</div><div class="mtop">#5 Monthly Bestseller</div><div class="mdesc">Creamy afgani chicken wrapped fresh.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller" data-photo="roll-kathi"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Kathi Roll</div><div class="mtop">#4 Monthly Bestseller</div><div class="mdesc">Street-style chicken kathi roll.</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller" data-photo="roll-afgani"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Afgani Roll</div><div class="mtop">#5 Monthly Bestseller</div><div class="mdesc">Creamy afgani chicken wrapped fresh.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-fries" class="mgrid">
-      <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">Salted French Fries</div><div class="mdesc">Classic golden salted fries.</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" data-photo="fries"><div class="micon">🍟</div><div class="minfo"><div class="mname">Salted French Fries</div><div class="mdesc">Classic golden salted fries.</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
       <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">Peri-Peri French Fries</div><div class="mdesc">Crispy fries with spicy peri-peri dusting.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-noodles" class="mgrid">
@@ -541,7 +543,7 @@ section{padding:56px 5%}
       <div class="mitem"><div class="micon">☕</div><div class="minfo"><div class="mname">Coffee</div><div class="mdesc">Hot freshly brewed coffee.</div></div><div class="mright"><span class="mprice">₹25</span><button class="madd" onclick="addCart(this)">+</button></div></div>
       <div class="menu-subhead section">🍹 Mocktail</div>
       <div class="mitem"><div class="micon">🍋</div><div class="minfo"><div class="mname">Mojito</div><div class="mdesc">Cool mint &amp; lime mocktail.</div></div><div class="mright"><span class="mprice">₹49</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem top-seller"><div class="micon"></div><div class="minfo"><div class="mname">Cold Coffee</div><div class="mtop">🥉 #3 Monthly Bestseller</div><div class="mdesc">Chilled café-style cold coffee.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller" data-photo="cold-coffee"><div class="micon"></div><div class="minfo"><div class="mname">Cold Coffee</div><div class="mtop">🥉 #3 Monthly Bestseller</div><div class="mdesc">Chilled café-style cold coffee.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
       <div class="mitem"><div class="micon">🥤</div><div class="minfo"><div class="mname">Soft Drinks</div><div class="mdesc">Chilled carbonated beverages.</div></div><div class="mright"><span class="mprice mrp">MRP</span><button class="madd" onclick="addCart(this)">+</button></div></div>
       <div class="mitem"><div class="micon">💧</div><div class="minfo"><div class="mname">Mineral Water</div><div class="mdesc">Packaged drinking water.</div></div><div class="mright"><span class="mprice mrp">MRP</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
@@ -832,10 +834,15 @@ section{padding:56px 5%}
 <script>
 var FOOD_PHOTOS = {
   chicken: 'assets/menu/chicken.jpg',
+  'chicken-2pc': 'assets/menu/chicken.jpg',
+  'chicken-4pc': 'assets/menu/chicken.jpg',
+  'chicken-8pc': 'assets/menu/chicken.jpg',
   strips: 'assets/menu/strips.jpg',
   samosa: 'assets/menu/samosa.jpg',
   'cold-coffee': 'assets/menu/cold-coffee.jpg',
   roll: 'assets/menu/roll.jpg',
+  'roll-kathi': 'assets/menu/roll-kathi.jpg',
+  'roll-afgani': 'assets/menu/roll-afgani.jpg',
   burger: 'assets/menu/burger.jpg',
   sandwich: 'assets/menu/sandwich.jpg',
   pizza: 'assets/menu/pizza.jpg',
@@ -845,7 +852,7 @@ var FOOD_PHOTOS = {
   noodles: 'assets/menu/noodles.jpg',
   hotdog: 'assets/menu/hotdog.jpg',
   tea: 'assets/menu/tea.jpg',
-  coffee: 'assets/menu/cold-coffee.jpg',
+  coffee: 'assets/menu/coffee.jpg',
   mojito: 'assets/menu/mojito.jpg',
   soda: 'assets/menu/soda.jpg',
   water: 'assets/menu/soda.jpg',
@@ -860,6 +867,9 @@ function foodPhoto(type) {
 function iconTypeFromName(name) {
   var n = name.toLowerCase().replace(/[^\w\s]/g, ' ');
   if (n.indexOf('strip') >= 0) return 'strips';
+  if (n.indexOf('2pcs') >= 0 && n.indexOf('fried') >= 0) return 'chicken-2pc';
+  if (n.indexOf('4pcs') >= 0 && n.indexOf('fried') >= 0) return 'chicken-4pc';
+  if (n.indexOf('8pcs') >= 0) return 'chicken-8pc';
   if (n.indexOf('samosa') >= 0) return 'samosa';
   if (n.indexOf('cold coffee') >= 0) return 'cold-coffee';
   if (n.indexOf('mojito') >= 0) return 'mojito';
@@ -877,24 +887,22 @@ function iconTypeFromName(name) {
   if (n.indexOf('extra cheese') >= 0) return 'cheese';
   if (n.indexOf('extra topping') >= 0) return 'toppings';
   if (n.indexOf('saving meal') >= 0) return 'meal';
-  if (n.indexOf('8pcs') >= 0) return 'bucket';
   if (n.indexOf('fried chicken') >= 0 || n.indexOf('pcs fried') >= 0) return 'chicken';
   if (n.indexOf('peri peri') >= 0 || n.indexOf('tandoori') >= 0) return 'spicy';
   if (n.indexOf('farmhouse') >= 0 || n.indexOf('margherita') >= 0 || n.indexOf('cheese corn') >= 0 || n.indexOf('paneer') >= 0 || n.indexOf('afgani') >= 0) return 'pizza';
   return 'chicken';
 }
 function initFoodPhotos() {
-  document.querySelectorAll('.mitem').forEach(function(item) {
-    if (item.querySelector('.mphoto')) return;
-    var nameEl = item.querySelector('.mname');
-    if (!nameEl) return;
-    var type = iconTypeFromName(nameEl.textContent);
+  document.querySelectorAll('.mitem[data-photo]').forEach(function(item) {
+    var type = item.getAttribute('data-photo');
+    if (!type || item.querySelector('.mphoto')) return;
     var src = foodPhoto(type);
     var photo = document.createElement('div');
     photo.className = 'mphoto';
     photo.innerHTML = '<img src="' + src + '" alt="" loading="lazy" decoding="async">';
     var iconEl = item.querySelector('.micon');
     if (iconEl) iconEl.remove();
+    item.classList.add('mitem-photo');
     item.insertBefore(photo, item.firstChild);
     var minfo = item.querySelector('.minfo');
     var mright = item.querySelector('.mright');
@@ -906,13 +914,12 @@ function initFoodPhotos() {
       body.appendChild(mright);
     }
   });
-  document.querySelectorAll('.fcard').forEach(function(card) {
+  document.querySelectorAll('.fcard[data-photo]').forEach(function(card) {
+    var type = card.getAttribute('data-photo');
     var imgEl = card.querySelector('.fcard-img');
-    var nameEl = card.querySelector('.fcard-body h3');
-    if (!imgEl || !nameEl || imgEl.querySelector('img')) return;
+    if (!type || !imgEl || imgEl.querySelector('img')) return;
     var badges = '';
     imgEl.querySelectorAll('.fbadge, .nv-dot, .v-dot').forEach(function(b) { badges += b.outerHTML; });
-    var type = iconTypeFromName(nameEl.textContent);
     imgEl.innerHTML = '<img src="' + foodPhoto(type) + '" alt="" loading="eager" decoding="async">' + badges;
   });
 }
