@@ -85,9 +85,18 @@ section{padding:80px 5%}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:48px}
 .fcard{background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;position:relative}
 .fcard:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(232,32,26,0.22)}
-.fcard-img{height:196px;background:linear-gradient(135deg,#241005,#3d1a08);display:flex;align-items:center;justify-content:center;font-size:76px;position:relative;overflow:hidden}
-.fcard-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:linear-gradient(to top,var(--dark3),transparent)}
+.fcard-img{height:220px;background:#1a0d06;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.06)}
+.fcard-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:56px;background:linear-gradient(to top,var(--dark3),transparent);pointer-events:none;z-index:1}
+.fcard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.fcard:hover .fcard-img img{transform:scale(1.06)}
 .fbadge{position:absolute;top:12px;left:12px;background:linear-gradient(135deg,var(--red),var(--orange));color:#fff;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:16px;z-index:1}
+.fbadge.gold{background:linear-gradient(135deg,#F5C518,#F5720A);color:#1a0800}
+.fbadge.silver{background:linear-gradient(135deg,#C0C0C0,#8A8A8A);color:#1a0800}
+.fbadge.bronze{background:linear-gradient(135deg,#CD7F32,#8B4513)}
+.fcard.top-seller{border-color:rgba(245,197,24,0.32);box-shadow:0 0 0 1px rgba(245,197,24,0.08)}
+.mitem.top-seller{border-color:rgba(245,197,24,0.28);background:linear-gradient(135deg,rgba(245,197,24,0.07),var(--dark3))}
+.mitem.top-seller .mname{white-space:normal}
+.mtop{display:inline-block;font-size:9px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;color:var(--yellow);margin-top:3px}
 .nv-dot{position:absolute;top:12px;right:12px;width:18px;height:18px;border:2px solid var(--red);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:1}
 .nv-dot::after{content:'';width:8px;height:8px;background:var(--red);border-radius:50%;display:block}
 .v-dot{position:absolute;top:12px;right:12px;width:18px;height:18px;border:2px solid #4CAF50;border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:1}
@@ -105,15 +114,35 @@ section{padding:80px 5%}
 .cat-filters{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 36px}
 .cat-btn{background:transparent;border:1px solid rgba(255,255,255,0.14);color:rgba(255,248,240,0.55);padding:8px 18px;border-radius:22px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.4px}
 .cat-btn.active,.cat-btn:hover{background:linear-gradient(135deg,var(--red),var(--orange));border-color:transparent;color:#fff}
-.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px;display:none}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;display:none}
 .mgrid.show{display:grid}
-.mitem{background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:11px;padding:13px;display:flex;align-items:center;gap:11px;transition:all 0.2s;cursor:pointer}
-.mitem:hover{border-color:rgba(232,32,26,0.3);transform:translateX(3px)}
-.micon{width:52px;height:52px;border-radius:9px;background:linear-gradient(135deg,#261005,#3d1808);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.mitem{background:var(--dark3);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:0;display:flex;flex-direction:column;align-items:stretch;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;cursor:pointer}
+.mitem:hover{border-color:rgba(232,32,26,0.35);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.35)}
+.mphoto{width:100%;height:168px;overflow:hidden;background:#1f0f06;flex-shrink:0;position:relative}
+.mphoto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.35s}
+.mitem:hover .mphoto img{transform:scale(1.07)}
+.mbody{padding:14px;display:flex;flex-direction:column;flex:1}
+.micon{display:none}
 .minfo{flex:1;min-width:0}
 .mname{font-size:13px;font-weight:800;color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#m-pizza .mname{white-space:normal}
 .mdesc{font-size:11px;color:var(--muted);line-height:1.3}
-.mright{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0}
+.msizes{font-size:11px;color:var(--yellow);font-weight:700;margin-top:5px;line-height:1.5}
+.msizes em{font-style:normal;color:rgba(255,248,240,0.45);font-weight:600}
+.menu-head{grid-column:1/-1;text-align:center;padding:4px 0 18px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:6px}
+.menu-head h3{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;letter-spacing:0.5px}
+.menu-head p{font-size:13px;color:rgba(255,248,240,0.55);margin-top:4px;line-height:1.5}
+.menu-subhead{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:16px 0 4px}
+.menu-subhead.veg{color:#6BCF6B}
+.menu-subhead.nonveg{color:#ff8a7a}
+.menu-subhead.addons,.menu-subhead.section{color:var(--orange)}
+.mprice.mrp{font-family:'Barlow',sans-serif;font-size:14px;font-weight:800;letter-spacing:0.5px}
+#m-drinks .mname{white-space:normal}
+.menu-tier{font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:none;color:rgba(255,248,240,0.45)}
+.menu-prices{font-size:10px;font-weight:700;color:var(--yellow);letter-spacing:0.3px;text-transform:none}
+.mtag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:0.7px;text-transform:uppercase;background:rgba(245,197,24,0.12);color:var(--yellow);border:1px solid rgba(245,197,24,0.3);padding:2px 8px;border-radius:10px}
+#m-pizza.mgrid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.mitem .mright{display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);gap:8px;flex-shrink:0}
 .mprice{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--yellow)}
 .madd{background:linear-gradient(135deg,var(--red),var(--orange));color:#fff;border:none;width:26px;height:26px;border-radius:5px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:800}
 
@@ -150,16 +179,31 @@ section{padding:80px 5%}
 .wtext h4{font-size:13px;font-weight:800;color:#fff;margin-bottom:3px}
 .wtext p{font-size:11px;color:var(--muted);line-height:1.35}
 
-/* REVIEWS */
+/* REVIEWS — Google style */
 .reviews-sec{background:var(--dark2)}
-.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:48px}
-.rcard{background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:22px}
-.stars{color:var(--yellow);font-size:14px;letter-spacing:2px;margin-bottom:11px}
-.rtext{font-size:13px;color:rgba(255,248,240,0.7);line-height:1.72;margin-bottom:14px;font-style:italic}
-.reviewer{display:flex;align-items:center;gap:11px}
-.ravatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--orange));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
-.rname{font-size:13px;font-weight:800;color:#fff}
-.rloc{font-size:11px;color:var(--muted)}
+.reviews-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:8px}
+.reviews-google{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 14px;font-size:13px;color:rgba(255,248,240,0.75)}
+.reviews-google strong{color:#fff;font-size:18px;font-family:'Bebas Neue',sans-serif;letter-spacing:0.5px}
+.reviews-google .gstars{color:#FBBC04;letter-spacing:1px;margin-left:4px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:36px}
+.greview{background:#1e1a18;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px}
+.greview-head{display:flex;align-items:flex-start;gap:12px}
+.gavatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;flex-shrink:0}
+.ga-red{background:#C5221F}.ga-blue{background:#1967D2}.ga-green{background:#137333}.ga-purple{background:#7B1FA2}.ga-teal{background:#007B83}
+.greview-user{flex:1;min-width:0}
+.gname{font-size:14px;font-weight:700;color:#8AB4F8;line-height:1.2}
+.gmeta{font-size:12px;color:rgba(255,248,240,0.45);margin-top:2px;line-height:1.35}
+.gbadge-local{color:#8AB4F8}
+.greview-rating{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.stars{color:#FBBC04;font-size:14px;letter-spacing:1px;line-height:1}
+.gtime{font-size:12px;color:rgba(255,248,240,0.42)}
+.gvisit{font-size:12px;color:rgba(255,248,240,0.55);line-height:1.4}
+.gtext{font-size:14px;color:rgba(255,248,240,0.88);line-height:1.65;margin:0}
+.gscores{display:flex;flex-wrap:wrap;gap:14px;padding-top:4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:2px}
+.gscores span{font-size:12px;color:rgba(255,248,240,0.5)}
+.gscores strong{color:rgba(255,248,240,0.85);font-weight:700}
+.gextra{font-size:12px;color:rgba(255,248,240,0.45);line-height:1.5}
+.gextra strong{color:rgba(255,248,240,0.6);font-weight:600}
 
 /* ORDER */
 .order-sec{background:linear-gradient(135deg,#1a0603,#0d0a08 60%,#080e05);text-align:center;padding:80px 5%}
@@ -193,7 +237,12 @@ section{padding:80px 5%}
 .ffield select option{background:var(--dark)}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fsub{width:100%;background:linear-gradient(135deg,var(--red),var(--orange));color:#fff;border:none;padding:13px;border-radius:7px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:1px;cursor:pointer;margin-top:6px;transition:transform 0.2s,box-shadow 0.2s}
-.fsub:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(232,32,26,0.5)}
+.fsub:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 22px rgba(232,32,26,0.5)}
+.fsub:disabled{opacity:0.65;cursor:wait}
+.fr-status{margin-top:12px;font-size:13px;line-height:1.55;padding:11px 14px;border-radius:7px}
+.fr-status.ok{background:rgba(76,175,80,0.14);color:#8BC34A;border:1px solid rgba(76,175,80,0.35)}
+.fr-status.err{background:rgba(232,32,26,0.12);color:#ff9e94;border:1px solid rgba(232,32,26,0.35)}
+.fr-status.loading{color:rgba(255,248,240,0.55);padding:11px 0;border:none}
 
 /* CONTACT */
 .contact-sec{background:var(--dark2)}
@@ -218,7 +267,7 @@ section{padding:80px 5%}
 footer{background:#090705;border-top:1px solid rgba(255,255,255,0.07);padding:56px 5% 28px}
 .footer-inner{max-width:1200px;margin:0 auto}
 .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
-.fbrand img{height:64px;margin-bottom:14px;display:block}
+.fbrand img{height:72px;width:auto;max-width:220px;object-fit:contain;margin-bottom:14px;display:block}
 .fbrand p{font-size:13px;color:rgba(255,248,240,0.45);line-height:1.7;max-width:240px}
 .fcol h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,248,240,0.4);margin-bottom:14px}
 .fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
@@ -231,9 +280,44 @@ footer{background:#090705;border-top:1px solid rgba(255,255,255,0.07);padding:56
 .fbot{padding-top:22px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .fcopy{font-size:12px;color:rgba(255,248,240,0.3)}
 .ftag{font-size:12px;color:var(--orange);font-weight:700}
-/* WA FLOAT */
+/* WA FLOAT + CART */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.55);transition:transform 0.25s,box-shadow 0.25s}
 .wa-float:hover{transform:scale(1.12);box-shadow:0 6px 28px rgba(37,211,102,0.7)}
+.cart-widget{position:fixed;bottom:96px;right:28px;z-index:998;width:min(340px,calc(100vw - 24px))}
+.cart-bar{display:flex;align-items:center;gap:10px;background:rgba(13,10,8,0.97);border:1px solid rgba(245,197,24,0.35);border-radius:12px;padding:10px 12px;box-shadow:0 8px 32px rgba(0,0,0,0.45);cursor:pointer;backdrop-filter:blur(12px)}
+.cart-bar-icon{font-size:20px;line-height:1}
+.cart-bar-text{flex:1;font-size:13px;font-weight:700;color:#fff;line-height:1.3}
+.cart-bar-wa{background:#25D366;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;white-space:nowrap}
+.cart-bar-wa:hover{filter:brightness(1.08)}
+.cart-panel{margin-top:8px;background:rgba(13,10,8,0.98);border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.5);backdrop-filter:blur(14px)}
+.cart-panel-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:14px;font-weight:800;color:#fff}
+.cart-panel-head button{background:none;border:none;color:rgba(255,248,240,0.5);font-size:18px;cursor:pointer;padding:4px;line-height:1}
+.cart-list{list-style:none;max-height:240px;overflow-y:auto;padding:8px 0}
+.cart-line{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.cart-line:last-child{border-bottom:none}
+.cart-line-info{flex:1;min-width:0}
+.cart-line-name{font-size:13px;font-weight:700;color:#fff;line-height:1.3}
+.cart-line-price{font-size:11px;color:var(--muted);margin-top:2px}
+.cart-qty{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.cart-qty button{width:26px;height:26px;border-radius:6px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.06);color:#fff;font-size:15px;font-weight:800;cursor:pointer;line-height:1}
+.cart-qty span{font-size:13px;font-weight:800;color:var(--yellow);min-width:16px;text-align:center}
+.cart-panel-foot{padding:14px 16px;border-top:1px solid rgba(255,255,255,0.08)}
+.cart-panel-total{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--yellow);margin-bottom:10px;line-height:1}
+.cart-panel-total small{display:block;font-family:'Barlow',sans-serif;font-size:11px;color:rgba(255,248,240,0.45);font-weight:600;margin-top:2px}
+.cart-send{width:100%;background:linear-gradient(135deg,#25D366,#1DA851);color:#fff;border:none;padding:12px;border-radius:8px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.6px;cursor:pointer;margin-bottom:8px}
+.cart-send:hover{filter:brightness(1.06)}
+.cart-clear-btn{width:100%;background:transparent;color:rgba(255,248,240,0.45);border:1px solid rgba(255,255,255,0.1);padding:9px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer}
+.cart-empty{padding:24px 16px;text-align:center;font-size:13px;color:rgba(255,248,240,0.45)}
+.size-picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1100;display:flex;align-items:center;justify-content:center;padding:20px}
+.size-picker-overlay[hidden]{display:none!important}
+.size-picker-box{background:#1a1008;border:1px solid rgba(245,197,24,0.32);border-radius:16px;padding:24px;width:min(360px,100%);box-shadow:0 20px 60px rgba(0,0,0,0.65)}
+.size-picker-box h4{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;margin-bottom:4px;letter-spacing:0.5px}
+.size-picker-sub{font-size:14px;color:var(--yellow);font-weight:700;margin-bottom:18px;line-height:1.3}
+.size-picker-options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.size-opt{display:flex;align-items:center;justify-content:space-between;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:14px 16px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-align:left;transition:border-color 0.2s,background 0.2s}
+.size-opt:hover{border-color:var(--yellow);background:rgba(245,197,24,0.1)}
+.size-opt-price{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--yellow)}
+.size-picker-cancel{width:100%;background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,248,240,0.5);padding:10px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700}
 /* RESPONSIVE */
 @media(max-width:880px){
 .hero-inner{grid-template-columns:1fr;text-align:center}
@@ -256,6 +340,7 @@ footer{background:#090705;border-top:1px solid rgba(255,255,255,0.07);padding:56
 .wgrid{grid-template-columns:1fr}
 .hero-btns{flex-direction:column;align-items:center}
 section{padding:56px 5%}
+.cart-widget{right:12px;left:12px;width:auto;bottom:88px}
 }
 </style>
 <script type="application/ld+json">
@@ -269,9 +354,10 @@ section{padding:56px 5%}
   "priceRange": "₹₹",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Opposite SBI Bank",
+    "streetAddress": "Opposite SBI Bank, Samastipur Road",
     "addressLocality": "Mahua",
     "addressRegion": "Bihar",
+    "postalCode": "844122",
     "addressCountry": "IN"
   },
   "openingHoursSpecification": [
@@ -327,7 +413,7 @@ section{padding:56px 5%}
       </div>
       <div class="hero-stats">
         <div><div class="hstat-num">50+</div><div class="hstat-label">Menu Items</div></div>
-        <div><div class="hstat-num">₹79</div><div class="hstat-label">Starting Price</div></div>
+        <div><div class="hstat-num">₹39</div><div class="hstat-label">Starting Price</div></div>
         <div><div class="hstat-num">5★</div><div class="hstat-label">Rated Lounge</div></div>
         <div><div class="hstat-num">100%</div><div class="hstat-label">Fresh Daily</div></div>
       </div>
@@ -343,16 +429,15 @@ section{padding:56px 5%}
 <!-- TRENDING -->
 <section class="trending" id="trending">
   <div class="si">
-    <div class="slabel">🔥 Most Loved</div>
-    <h2 class="stitle">Trending <em>Right Now</em></h2>
-    <p class="ssub">Our bestsellers — ordered again and again by Mahua's food lovers.</p>
+    <div class="slabel">🏆 Monthly Bestsellers</div>
+    <h2 class="stitle">Top <em>5 Sellers</em></h2>
+    <p class="ssub">Our highest-selling picks every month — the favourites Mahua orders again and again.</p>
     <div class="tgrid">
-      <div class="fcard"><div class="fcard-img">🍗<div class="fbadge">🏆 Best Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Broast</h3><p>Our signature crispy broasted chicken — golden, juicy, absolutely addictive.</p><div class="fcard-foot"><span class="fprice">₹99</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard"><div class="fcard-img">🍔<div class="fbadge">❤️ Most Loved</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Crispy Zinger Burger</h3><p>Fiery, crunchy, loaded — the burger that started a cult following in Mahua.</p><div class="fcard-foot"><span class="fprice">₹149</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard"><div class="fcard-img">🍕<div class="fbadge">🔥 Hot Pick</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Loaded Chicken Pizza</h3><p>Generous chicken toppings, melted cheese, crispy crust. 8" of pure bliss.</p><div class="fcard-foot"><span class="fprice">₹249</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard"><div class="fcard-img">🍟<div class="fbadge">⭐ Fan Fave</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Strips (6 pcs)</h3><p>Hand-breaded, crispy strips with dipping sauce. Pure satisfaction.</p><div class="fcard-foot"><span class="fprice">₹150</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard"><div class="fcard-img">🥟<div class="fbadge">🌶 Spicy Hot</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Tandoori Momos</h3><p>Smoky, charred, spicy — our tandoori momos are unlike anything in town.</p><div class="fcard-foot"><span class="fprice">₹149</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
-      <div class="fcard"><div class="fcard-img">🧋<div class="fbadge">💜 New!</div><div class="v-dot"></div></div><div class="fcard-body"><h3>Oreo Shake</h3><p>Thick, creamy, cookies-n-cream shake. The perfect companion to any meal.</p><div class="fcard-foot"><span class="fprice">₹149</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge gold">#1 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Strips (Large)</h3><p>Hand-breaded crispy strips — our #1 revenue earner, loved with fries or on the go.</p><div class="fcard-foot"><span class="fprice">₹150</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge silver">#2 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Samosa</h3><p>Crispy pastry stuffed with spiced chicken — a Mahua snack-time favourite.</p><div class="fcard-foot"><span class="fprice">₹35</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge bronze">#3 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Cold Coffee</h3><p>Chilled café-style cold coffee — the perfect pairing with fried chicken.</p><div class="fcard-foot"><span class="fprice">₹69</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge">#4 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Kathi Roll</h3><p>Street-style chicken kathi roll — quick, filling, and full of flavour.</p><div class="fcard-foot"><span class="fprice">₹79</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
+      <div class="fcard top-seller"><div class="fcard-img"><div class="fbadge">#5 Top Seller</div><div class="nv-dot"></div></div><div class="fcard-body"><h3>Chicken Afgani Roll</h3><p>Creamy afgani chicken wrapped fresh — rich, indulgent, and always in demand.</p><div class="fcard-foot"><span class="fprice">₹89</span><button class="order-btn-sm" onclick="addCart(this)">Order Now</button></div></div></div>
     </div>
   </div>
 </section>
@@ -366,81 +451,108 @@ section{padding:56px 5%}
     <div class="cat-filters">
       <button class="cat-btn active" onclick="showMenu('chicken',this)">🍗 Fried Chicken</button>
       <button class="cat-btn" onclick="showMenu('burgers',this)">🍔 Burgers</button>
-      <button class="cat-btn" onclick="showMenu('pizza',this)">🍕 Pizza</button>
-      <button class="cat-btn" onclick="showMenu('momos',this)">🥟 Momos</button>
+      <button class="cat-btn" onclick="showMenu('sandwich',this)">🥪 Sandwich</button>
       <button class="cat-btn" onclick="showMenu('rolls',this)">🌯 Rolls</button>
-      <button class="cat-btn" onclick="showMenu('fries',this)">🍟 Fries & Sides</button>
+      <button class="cat-btn" onclick="showMenu('fries',this)">🍟 Fries</button>
+      <button class="cat-btn" onclick="showMenu('momos',this)">🥟 Momos</button>
       <button class="cat-btn" onclick="showMenu('noodles',this)">🍜 Noodles</button>
+      <button class="cat-btn" onclick="showMenu('hotdog',this)">🌭 Hot Dog</button>
+      <button class="cat-btn" onclick="showMenu('pizza',this)">🍕 Pizza</button>
       <button class="cat-btn" onclick="showMenu('drinks',this)">☕ Beverages</button>
-      <button class="cat-btn" onclick="showMenu('combos',this)">🎁 Combos</button>
+      <button class="cat-btn" onclick="showMenu('combos',this)">🎁 Value Meals</button>
     </div>
     <div id="m-chicken" class="mgrid show">
-      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">Chicken Broast</div><div class="mdesc">Crispy broasted perfection</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">Chicken Strips (6 pcs)</div><div class="mdesc">Hand-breaded crispy strips</div></div><div class="mright"><span class="mprice">₹150</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍿</div><div class="minfo"><div class="mname">Chicken Popcorn</div><div class="mdesc">Bite-sized crispy bites</div></div><div class="mright"><span class="mprice">₹120</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">Chicken Wings</div><div class="mdesc">Saucy sticky wings</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🪣</div><div class="minfo"><div class="mname">Crispy Chicken Bucket</div><div class="mdesc">Family-size bucket</div></div><div class="mright"><span class="mprice">₹399</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🌶</div><div class="minfo"><div class="mname">Spicy Fried Chicken</div><div class="mdesc">Extra fiery kick</div></div><div class="mright"><span class="mprice">₹129</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">👨‍👩‍👧</div><div class="minfo"><div class="mname">Family Chicken Combo</div><div class="mdesc">Feeds the whole family</div></div><div class="mright"><span class="mprice">₹599</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">2pcs Fried Chicken</div><div class="mdesc">Crispy golden fried chicken — perfect for one.</div></div><div class="mright"><span class="mprice">₹179</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">4pcs Fried Chicken</div><div class="mdesc">Shareable portion of our signature fried chicken.</div></div><div class="mright"><span class="mprice">₹349</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🪣</div><div class="minfo"><div class="mname">8pcs Fried Chicken</div><div class="mdesc">Family-size bucket of crispy fried chicken.</div></div><div class="mright"><span class="mprice">₹689</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller"><div class="micon"></div><div class="minfo"><div class="mname">Chicken Strips (Large)</div><div class="mtop">🏆 #1 Monthly Bestseller</div><div class="mdesc">Hand-breaded crispy chicken strips.</div></div><div class="mright"><span class="mprice">₹150</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller"><div class="micon"></div><div class="minfo"><div class="mname">Chicken Samosa</div><div class="mtop">🥈 #2 Monthly Bestseller</div><div class="mdesc">Crispy pastry with spiced chicken filling.</div></div><div class="mright"><span class="mprice">₹35</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-burgers" class="mgrid">
-      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Burger</div><div class="mdesc">Classic crispy chicken</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Cheese Burger</div><div class="mdesc">Melted cheese loaded</div></div><div class="mright"><span class="mprice">₹119</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Crispy Zinger Burger</div><div class="mdesc">Spicy zinger patty</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥦</div><div class="minfo"><div class="mname">Veg Burger</div><div class="mdesc">Fresh veggie delight</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Double Patty Burger</div><div class="mdesc">Double the goodness</div></div><div class="mright"><span class="mprice">₹179</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Burger</div><div class="mdesc">Classic crispy chicken burger.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍔</div><div class="minfo"><div class="mname">Chicken Cheese Burger</div><div class="mdesc">Crispy chicken with melted cheese.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+    </div>
+    <div id="m-sandwich" class="mgrid">
+      <div class="mitem"><div class="micon">🥪</div><div class="minfo"><div class="mname">Veg Corn</div><div class="mdesc">Sweet corn sandwich — light &amp; tasty.</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🥪</div><div class="minfo"><div class="mname">Chicken Corn</div><div class="mdesc">Chicken &amp; corn loaded sandwich.</div></div><div class="mright"><span class="mprice">₹129</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-pizza" class="mgrid">
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Margherita (6")</div><div class="mdesc">Classic tomato & cheese</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Farm Fresh (6")</div><div class="mdesc">Garden veggies loaded</div></div><div class="mright"><span class="mprice">₹119</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Chicken Pizza (6")</div><div class="mdesc">Tender chicken pieces</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Cheese Burst (8")</div><div class="mdesc">Oozing cheese inside</div></div><div class="mright"><span class="mprice">₹199</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Loaded Chicken (8")</div><div class="mdesc">Packed with chicken</div></div><div class="mright"><span class="mprice">₹249</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Loaded Chicken (10")</div><div class="mdesc">Party-size loaded</div></div><div class="mright"><span class="mprice">₹349</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Farm Fresh (10")</div><div class="mdesc">Veggie celebration</div></div><div class="mright"><span class="mprice">₹299</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="menu-head">
+        <h3>Pizza Menu</h3>
+        <p>Crispy on the outside, loaded on the inside — freshly baked with premium ingredients.</p>
+      </div>
+
+      <div class="menu-subhead section">🍕 Mini Pizza <span class="menu-tier">6-inch personal size</span></div>
+      <div class="mitem pizza-mini"><div class="micon">🍕</div><div class="minfo"><div class="mname">Chicken Farmhouse</div><div class="mdesc">Fresh chicken with tomato, onion &amp; capsicum — mini 6".</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem pizza-mini"><div class="micon">🍕</div><div class="minfo"><div class="mname">Chicken Afgani</div><div class="mdesc">Juicy chicken in rich creamy afgani sauce — mini 6".</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem pizza-mini"><div class="micon">🌶</div><div class="minfo"><div class="mname">Chicken Tandoori 🌶</div><div class="mdesc">Smoky tandoori chicken with bold spices — mini 6".</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem pizza-mini"><div class="micon">🌶</div><div class="minfo"><div class="mname">Chicken Peri Peri 🌶</div><div class="mdesc">Chicken with hot peri peri seasoning — mini 6".</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+
+      <div class="menu-subhead section">🍕 Full Size Pizzas <span class="menu-tier">6" · 8" · 10"</span></div>
+      <div class="menu-subhead veg">🌿 Veg Pizzas <span class="menu-tier">Classic</span> <span class="menu-prices">6" ₹99 · 8" ₹199 · 10" ₹299</span></div>
+      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Paneer Farmhouse</div><div class="mdesc">Fresh paneer with tomato, onion &amp; capsicum — balanced &amp; flavorful.</div><div class="msizes"><em>6"</em> ₹99 · <em>8"</em> ₹199 · <em>10"</em> ₹299</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Margherita</div><div class="mdesc">Loaded cheese with signature seasoning — simple &amp; cheesy.</div><div class="msizes"><em>6"</em> ₹99 · <em>8"</em> ₹199 · <em>10"</em> ₹299</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Cheese Corn</div><div class="mdesc">Sweet corn with melted cheese — creamy &amp; satisfying.</div><div class="msizes"><em>6"</em> ₹99 · <em>8"</em> ₹199 · <em>10"</em> ₹299</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+
+      <div class="menu-subhead veg">🌿 Veg Pizzas <span class="menu-tier">Premium</span> <span class="mtag">Most Loved</span> <span class="menu-prices">6" ₹149 · 8" ₹249 · 10" ₹349</span></div>
+      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Paneer Afgani</div><div class="mdesc">Paneer in rich creamy afgani gravy — creamy &amp; indulgent.</div><div class="msizes"><em>6"</em> ₹149 · <em>8"</em> ₹249 · <em>10"</em> ₹349</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🌶</div><div class="minfo"><div class="mname">Paneer Tandoori 🌶</div><div class="mdesc">Tandoori paneer with bold spices — smoky &amp; spicy.</div><div class="msizes"><em>6"</em> ₹149 · <em>8"</em> ₹249 · <em>10"</em> ₹349</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🌶</div><div class="minfo"><div class="mname">Paneer Peri Peri 🌶</div><div class="mdesc">Paneer tossed in peri peri masala — spicy &amp; zesty punch.</div><div class="msizes"><em>6"</em> ₹149 · <em>8"</em> ₹249 · <em>10"</em> ₹349</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+
+      <div class="menu-subhead nonveg">🍗 Non-Veg Pizzas <span class="menu-tier">Classic</span> <span class="menu-prices">6" ₹99 · 8" ₹199 · 10" ₹299</span></div>
+      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Chicken Farmhouse</div><div class="mdesc">Fresh chicken with tomato, onion &amp; capsicum — balanced &amp; filling.</div><div class="msizes"><em>6"</em> ₹99 · <em>8"</em> ₹199 · <em>10"</em> ₹299</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+
+      <div class="menu-subhead nonveg">🍗 Non-Veg Pizzas <span class="menu-tier">Premium</span> <span class="mtag">Most Loved</span> <span class="menu-prices">6" ₹149 · 8" ₹249 · 10" ₹349</span></div>
+      <div class="mitem"><div class="micon">🍕</div><div class="minfo"><div class="mname">Chicken Afgani</div><div class="mdesc">Juicy chicken in rich creamy afgani sauce — rich &amp; creamy.</div><div class="msizes"><em>6"</em> ₹149 · <em>8"</em> ₹249 · <em>10"</em> ₹349</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🌶</div><div class="minfo"><div class="mname">Chicken Tandoori 🌶</div><div class="mdesc">Smoky tandoori chicken with bold spices — smoky &amp; spicy.</div><div class="msizes"><em>6"</em> ₹149 · <em>8"</em> ₹249 · <em>10"</em> ₹349</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🌶</div><div class="minfo"><div class="mname">Chicken Peri Peri 🌶</div><div class="mdesc">Chicken with peri peri seasoning — hot &amp; flavorful.</div><div class="msizes"><em>6"</em> ₹149 · <em>8"</em> ₹249 · <em>10"</em> ₹349</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+
+      <div class="menu-subhead addons">➕ Add-Ons</div>
+      <div class="mitem"><div class="micon">🧀</div><div class="minfo"><div class="mname">Extra Cheese</div><div class="mdesc">Add more melted cheese to any pizza.</div><div class="msizes"><em>6"</em> ₹15 · <em>8"</em> ₹25 · <em>10"</em> ₹50</div></div><div class="mright"><span class="mprice">₹15</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍄</div><div class="minfo"><div class="mname">Extra Toppings</div><div class="mdesc">Load up with extra toppings on any pizza.</div><div class="msizes"><em>6"</em> ₹25 · <em>8"</em> ₹35 · <em>10"</em> ₹50</div></div><div class="mright"><span class="mprice">₹25</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-momos" class="mgrid">
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Veg Momos</div><div class="mdesc">Steamed veg dumplings</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Chicken Momos</div><div class="mdesc">Juicy chicken filling</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Fried Momos</div><div class="mdesc">Crispy fried outside</div></div><div class="mright"><span class="mprice">₹119</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🔥</div><div class="minfo"><div class="mname">Tandoori Momos</div><div class="mdesc">Smoky tandoor finish</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Half Veg Momos</div><div class="mdesc">Steamed veg dumplings — half plate.</div></div><div class="mright"><span class="mprice">₹39</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Full Veg Momos</div><div class="mdesc">Steamed veg dumplings — full plate.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Half Chicken Momos</div><div class="mdesc">Juicy chicken dumplings — half plate.</div></div><div class="mright"><span class="mprice">₹49</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🥟</div><div class="minfo"><div class="mname">Full Chicken Momos</div><div class="mdesc">Juicy chicken dumplings — full plate.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-rolls" class="mgrid">
-      <div class="mitem"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Kathi Roll</div><div class="mdesc">Street-style kathi</div></div><div class="mright"><span class="mprice">₹119</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🌯</div><div class="minfo"><div class="mname">Egg Roll</div><div class="mdesc">Classic egg wrap</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🌯</div><div class="minfo"><div class="mname">Paneer Roll</div><div class="mdesc">Soft paneer filling</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Wrap</div><div class="mdesc">Loaded chicken wrap</div></div><div class="mright"><span class="mprice">₹139</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🌯</div><div class="minfo"><div class="mname">Veg Cheese Roll</div><div class="mdesc">Veg filling with melted cheese.</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Kathi Roll</div><div class="mtop">#4 Monthly Bestseller</div><div class="mdesc">Street-style chicken kathi roll.</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller"><div class="micon">🌯</div><div class="minfo"><div class="mname">Chicken Afgani Roll</div><div class="mtop">#5 Monthly Bestseller</div><div class="mdesc">Creamy afgani chicken wrapped fresh.</div></div><div class="mright"><span class="mprice">₹89</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-fries" class="mgrid">
-      <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">French Fries</div><div class="mdesc">Classic golden fries</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">Peri Peri Fries</div><div class="mdesc">Spicy peri dusting</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">Loaded Fries</div><div class="mdesc">Cheese + toppings</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🧀</div><div class="minfo"><div class="mname">Cheese Fries</div><div class="mdesc">Melted cheese drizzle</div></div><div class="mright"><span class="mprice">₹129</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍗</div><div class="minfo"><div class="mname">Nuggets</div><div class="mdesc">Crispy bite nuggets</div></div><div class="mright"><span class="mprice">₹139</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥪</div><div class="minfo"><div class="mname">Veg Sandwich</div><div class="mdesc">Fresh veggie layers</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥪</div><div class="minfo"><div class="mname">Chicken Sandwich</div><div class="mdesc">Grilled chicken slices</div></div><div class="mright"><span class="mprice">₹119</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">Salted French Fries</div><div class="mdesc">Classic golden salted fries.</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍟</div><div class="minfo"><div class="mname">Peri-Peri French Fries</div><div class="mdesc">Crispy fries with spicy peri-peri dusting.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-noodles" class="mgrid">
-      <div class="mitem"><div class="micon">🍜</div><div class="minfo"><div class="mname">Veg Noodles</div><div class="mdesc">Stir-fried veg noodles</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍜</div><div class="minfo"><div class="mname">Chicken Noodles</div><div class="mdesc">Tender chicken pieces</div></div><div class="mright"><span class="mprice">₹129</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🌶</div><div class="minfo"><div class="mname">Schezwan Noodles</div><div class="mdesc">Fiery schezwan sauce</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍜</div><div class="minfo"><div class="mname">Veg Hakka Noodles</div><div class="mdesc">Stir-fried veg hakka noodles.</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍜</div><div class="minfo"><div class="mname">Egg Hakka Noodles</div><div class="mdesc">Hakka noodles tossed with egg.</div></div><div class="mright"><span class="mprice">₹129</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🍜</div><div class="minfo"><div class="mname">Chicken Hakka Noodles</div><div class="mdesc">Hakka noodles with tender chicken.</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+    </div>
+    <div id="m-hotdog" class="mgrid">
+      <div class="mitem"><div class="micon">🌭</div><div class="minfo"><div class="mname">Chicken Hot Dog</div><div class="mdesc">Classic chicken hot dog — quick &amp; tasty.</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🌭</div><div class="minfo"><div class="mname">Chicken Cheese Hot Dog</div><div class="mdesc">Chicken hot dog loaded with cheese.</div></div><div class="mright"><span class="mprice">₹79</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-drinks" class="mgrid">
-      <div class="mitem"><div class="micon">☕</div><div class="minfo"><div class="mname">Cold Coffee</div><div class="mdesc">Chilled café-style</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">☕</div><div class="minfo"><div class="mname">Hot Coffee</div><div class="mdesc">Freshly brewed</div></div><div class="mright"><span class="mprice">₹59</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍵</div><div class="minfo"><div class="mname">Tea / Lemon Tea</div><div class="mdesc">Hot & refreshing</div></div><div class="mright"><span class="mprice">₹20</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍋</div><div class="minfo"><div class="mname">Mojito</div><div class="mdesc">Mint & lime refresher</div></div><div class="mright"><span class="mprice">₹99</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">💙</div><div class="minfo"><div class="mname">Blue Lagoon</div><div class="mdesc">Tropical blue mocktail</div></div><div class="mright"><span class="mprice">₹119</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍫</div><div class="minfo"><div class="mname">Oreo Shake</div><div class="mdesc">Thick cookies shake</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🍫</div><div class="minfo"><div class="mname">Chocolate Shake</div><div class="mdesc">Rich choco shake</div></div><div class="mright"><span class="mprice">₹139</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem"><div class="micon">🥤</div><div class="minfo"><div class="mname">Soft Drinks</div><div class="mdesc">Chilled carbonated</div></div><div class="mright"><span class="mprice">₹40</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="menu-subhead section">☕ Hot Beverage</div>
+      <div class="mitem"><div class="micon">🍵</div><div class="minfo"><div class="mname">Tea</div><div class="mdesc">Hot freshly brewed tea.</div></div><div class="mright"><span class="mprice">₹15</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">☕</div><div class="minfo"><div class="mname">Coffee</div><div class="mdesc">Hot freshly brewed coffee.</div></div><div class="mright"><span class="mprice">₹25</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="menu-subhead section">🍹 Mocktail</div>
+      <div class="mitem"><div class="micon">🍋</div><div class="minfo"><div class="mname">Mojito</div><div class="mdesc">Cool mint &amp; lime mocktail.</div></div><div class="mright"><span class="mprice">₹49</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem top-seller"><div class="micon"></div><div class="minfo"><div class="mname">Cold Coffee</div><div class="mtop">🥉 #3 Monthly Bestseller</div><div class="mdesc">Chilled café-style cold coffee.</div></div><div class="mright"><span class="mprice">₹69</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">🥤</div><div class="minfo"><div class="mname">Soft Drinks</div><div class="mdesc">Chilled carbonated beverages.</div></div><div class="mright"><span class="mprice mrp">MRP</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem"><div class="micon">💧</div><div class="minfo"><div class="mname">Mineral Water</div><div class="mdesc">Packaged drinking water.</div></div><div class="mright"><span class="mprice mrp">MRP</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
     <div id="m-combos" class="mgrid">
-      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">🎁</div><div class="minfo"><div class="mname">Burger + Fries + Coke</div><div class="mdesc">Classic combo deal</div></div><div class="mright"><span class="mprice">₹199</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">🍕</div><div class="minfo"><div class="mname">Pizza Combo</div><div class="mdesc">Pizza + sides deal</div></div><div class="mright"><span class="mprice">₹299</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">🪣</div><div class="minfo"><div class="mname">Chicken Bucket Combo</div><div class="mdesc">Bucket + fries + drinks</div></div><div class="mright"><span class="mprice">₹499</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">👨‍👩‍👧</div><div class="minfo"><div class="mname">Family Meal Combo</div><div class="mdesc">Feeds 4+ people</div></div><div class="mright"><span class="mprice">₹799</span><button class="madd" onclick="addCart(this)">+</button></div></div>
-      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">🎓</div><div class="minfo"><div class="mname">Student Combo</div><div class="mdesc">Budget-friendly pack</div></div><div class="mright"><span class="mprice">₹149</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="menu-head">
+        <h3>Value Meals</h3>
+        <p>Curated combos that save you more — great for students, couples &amp; families.</p>
+      </div>
+      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">🎓</div><div class="minfo"><div class="mname">Student Saving Meal</div><div class="mdesc">Budget-friendly meal pack for students.</div></div><div class="mright"><span class="mprice">₹329</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">⭐</div><div class="minfo"><div class="mname">Special Saving Meal</div><div class="mdesc">Our popular value combo — more food, more savings.</div></div><div class="mright"><span class="mprice">₹389</span><button class="madd" onclick="addCart(this)">+</button></div></div>
+      <div class="mitem" style="border-color:rgba(245,197,24,0.25)"><div class="micon">👨‍👩‍👧</div><div class="minfo"><div class="mname">Ultimate Saving Meal</div><div class="mdesc">The biggest value meal — perfect for sharing.</div></div><div class="mright"><span class="mprice">₹799</span><button class="madd" onclick="addCart(this)">+</button></div></div>
     </div>
   </div>
 </section>
@@ -452,10 +564,10 @@ section{padding:56px 5%}
     <h2 class="stitle">Offers &amp; <em>Deals</em></h2>
     <p class="ssub">More food, less money. Our deals are designed to make every rupee count.</p>
     <div class="ogrid">
-      <div class="ocard r"><div class="otag">🎓 Student Special</div><div class="otitle">Student Combo</div><div class="osub">Burger + Fries + Drink. Show your student ID and save!</div><div class="oprice"><small>Only</small> ₹149</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
-      <div class="ocard o"><div class="otag">👨‍👩‍👧 Family Pack</div><div class="otitle">Family Meal</div><div class="osub">Bucket + Pizza + Sides + 4 Drinks. Feeds the whole family!</div><div class="oprice"><small>Only</small> ₹799</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
-      <div class="ocard y"><div class="otag">🏁 Weekend Special</div><div class="otitle">Bucket Deal</div><div class="osub">Crispy Chicken Bucket + Peri Peri Fries + 2 Mojitos!</div><div class="oprice"><small>Only</small> ₹499</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
-      <div class="ocard g"><div class="otag">💚 Best Value</div><div class="otitle">Pizza Combo</div><div class="osub">8" Loaded Pizza + Garlic Bread + Cold Coffee. Pure value!</div><div class="oprice"><small>Only</small> ₹299</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
+      <div class="ocard r"><div class="otag">🎓 Student Special</div><div class="otitle">Student Saving Meal</div><div class="osub">Curated value meal — more food at a student-friendly price.</div><div class="oprice"><small>Only</small> ₹329</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
+      <div class="ocard o"><div class="otag">⭐ Best Value</div><div class="otitle">Special Saving Meal</div><div class="osub">Our most popular combo — great taste, bigger savings.</div><div class="oprice"><small>Only</small> ₹389</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
+      <div class="ocard y"><div class="otag">👨‍👩‍👧 Family Pack</div><div class="otitle">Ultimate Saving Meal</div><div class="osub">The biggest value meal — perfect for sharing with family.</div><div class="oprice"><small>Only</small> ₹799</div><button class="octa" onclick="addCart(this)">Order Now</button></div>
+      <div class="ocard g"><div class="otag">🛵 Free Delivery</div><div class="otitle">Home Delivery</div><div class="osub">Free home delivery in Mahua. Order on WhatsApp or call 9525095200.</div><div class="oprice"><small>Call</small> Now</div><a href="https://wa.me/919525095200" class="octa" style="text-decoration:none;display:inline-block">WhatsApp</a></div>
     </div>
   </div>
 </section>
@@ -490,16 +602,87 @@ section{padding:56px 5%}
 <!-- REVIEWS -->
 <section class="reviews-sec" id="reviews">
   <div class="si">
-    <div class="slabel">💬 Happy Customers</div>
-    <h2 class="stitle">What People <em>Are Saying</em></h2>
-    <div class="rgrid">
-      <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"Best broast chicken in all of Mahua! The crunch is real and the taste is incredible. Been coming here every weekend for 3 months now. Worth every rupee!"</p><div class="reviewer"><div class="ravatar">RK</div><div><div class="rname">Rahul Kumar</div><div class="rloc">Mahua, Bihar</div></div></div></div>
-      <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"The student combo at ₹149 is an absolute steal! The zinger burger slaps harder than anything I've had in Muzaffarpur. My whole gang eats here."</p><div class="reviewer"><div class="ravatar">PS</div><div><div class="rname">Priya Singh</div><div class="rloc">College Student, Mahua</div></div></div></div>
-      <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"Took the family for the Family Meal Combo. My kids went crazy for the chicken bucket. The space is clean and food is consistently amazing!"</p><div class="reviewer"><div class="ravatar">AV</div><div><div class="rname">Amit Verma</div><div class="rloc">Family Diner, Mahua</div></div></div></div>
-      <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"The tandoori momos are out of this world. I've been to many places in Bihar but Crispy &amp; Crunch has something genuinely different. Top quality!"</p><div class="reviewer"><div class="ravatar">SK</div><div><div class="rname">Sunita Kumari</div><div class="rloc">Food Blogger, Bihar</div></div></div></div>
-      <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"Perfect place for dates! The loaded chicken pizza is divine, Oreo shake is perfect. Feels like a premium restaurant at affordable prices."</p><div class="reviewer"><div class="ravatar">VK</div><div><div class="rname">Vivek &amp; Kavita</div><div class="rloc">Couple, Mahua</div></div></div></div>
-      <div class="rcard"><div class="stars">★★★★★</div><p class="rtext">"Ordered via WhatsApp and delivery was super fast. Food was hot and fresh. This place is setting a new standard for fast food in our area!"</p><div class="reviewer"><div class="ravatar">MJ</div><div><div class="rname">Mohammad Javed</div><div class="rloc">Online Customer</div></div></div></div>
+    <div class="reviews-head">
+      <div>
+        <div class="slabel">⭐ Google Reviews</div>
+        <h2 class="stitle">What People <em>Are Saying</em></h2>
+        <p class="ssub" style="margin-top:8px">Real reviews from customers on Google — unedited, straight from Mahua.</p>
+      </div>
+      <div class="reviews-google" aria-label="Google rating">
+        <span>Google</span>
+        <strong>4.8</strong>
+        <span class="gstars">★★★★★</span>
+      </div>
     </div>
+    <div class="rgrid">
+      <article class="greview">
+        <div class="greview-head">
+          <div class="gavatar ga-blue" aria-hidden="true">M</div>
+          <div class="greview-user">
+            <div class="gname">Mohammad Qurban</div>
+            <div class="gmeta">6 reviews · 4 photos</div>
+          </div>
+        </div>
+        <div class="greview-rating"><span class="stars" aria-label="5 stars">★★★★★</span><span class="gtime">33 weeks ago</span></div>
+        <p class="gtext">Often, before eating non-veg, we definitely think twice about whether it is hygienic or not, but in crispy and crunchy restaurants, the meal is hygienic with great taste. And when we book a table, they prepare fresh meals for us. I would say this is the best restaurant in Mahua. 🍔</p>
+        <div class="gscores"><span>Food <strong>5/5</strong></span><span>Service <strong>5/5</strong></span><span>Atmosphere <strong>5/5</strong></span></div>
+        <p class="gextra"><strong>Noise level:</strong> Quiet, easy to talk · <strong>Group size:</strong> Suitable for all group sizes</p>
+      </article>
+      <article class="greview">
+        <div class="greview-head">
+          <div class="gavatar ga-green" aria-hidden="true">P</div>
+          <div class="greview-user">
+            <div class="gname">prachi kumari</div>
+            <div class="gmeta"><span class="gbadge-local">Local Guide</span> · 31 reviews · 0 photos</div>
+          </div>
+        </div>
+        <div class="greview-rating"><span class="stars" aria-label="5 stars">★★★★★</span><span class="gtime">19 weeks ago</span></div>
+        <p class="gtext">Awesome taste, fresh meal and good service</p>
+        <div class="gscores"><span>Food <strong>5/5</strong></span><span>Service <strong>5/5</strong></span><span>Atmosphere <strong>5/5</strong></span></div>
+        <p class="gextra"><strong>Noise level:</strong> Quiet, easy to talk · <strong>Wait time:</strong> Up to 10 min</p>
+      </article>
+      <article class="greview">
+        <div class="greview-head">
+          <div class="gavatar ga-purple" aria-hidden="true">M</div>
+          <div class="greview-user">
+            <div class="gname">Mishal</div>
+            <div class="gmeta">1 review · 0 photos</div>
+          </div>
+        </div>
+        <div class="greview-rating"><span class="stars" aria-label="5 stars">★★★★★</span><span class="gtime">7 weeks ago</span></div>
+        <p class="gvisit">Dine in · Lunch · ₹200–400</p>
+        <p class="gtext">I went there and I liked it. Experience was good compared to other restaurants in Mahua. I would prefer to go there with friends not alone ….</p>
+        <div class="gscores"><span>Food <strong>4/5</strong></span><span>Service <strong>3/5</strong></span><span>Atmosphere <strong>4/5</strong></span></div>
+      </article>
+      <article class="greview">
+        <div class="greview-head">
+          <div class="gavatar ga-teal" aria-hidden="true">H</div>
+          <div class="greview-user">
+            <div class="gname">Heart Śtealer</div>
+            <div class="gmeta">4 reviews · 0 photos</div>
+          </div>
+        </div>
+        <div class="greview-rating"><span class="stars" aria-label="5 stars">★★★★★</span><span class="gtime">33 weeks ago</span></div>
+        <p class="gtext">I love chicken fried and keema pizza. And momos is just perfect — i remember it's taste like nepali momos</p>
+        <div class="gscores"><span>Food <strong>5/5</strong></span><span>Service <strong>5/5</strong></span><span>Atmosphere <strong>5/5</strong></span></div>
+      </article>
+      <article class="greview">
+        <div class="greview-head">
+          <div class="gavatar ga-red" aria-hidden="true">A</div>
+          <div class="greview-user">
+            <div class="gname">Alam's vlog</div>
+            <div class="gmeta">1 review · 0 photos</div>
+          </div>
+        </div>
+        <div class="greview-rating"><span class="stars" aria-label="5 stars">★★★★★</span><span class="gtime">33 weeks ago</span></div>
+        <p class="gtext">Great place and great in test. Best non veg pizza corner and chinese</p>
+        <div class="gscores"><span>Food <strong>5/5</strong></span><span>Service <strong>5/5</strong></span><span>Atmosphere <strong>5/5</strong></span></div>
+        <p class="gextra"><strong>Noise level:</strong> Quiet, easy to talk</p>
+      </article>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:13px;color:rgba(255,248,240,0.4)">
+      <a href="https://maps.app.goo.gl/x3w9rtaTVv7gx7bh8" target="_blank" rel="noopener noreferrer" style="color:var(--yellow);text-decoration:none;font-weight:700">Read all reviews on Google →</a>
+    </p>
   </div>
 </section>
 
@@ -537,20 +720,23 @@ section{padding:56px 5%}
           <div class="fperk"><div class="fpi">🤝</div><div class="fpt">Ongoing Support</div><div class="fps">Team always available</div></div>
         </div>
       </div>
-      <div class="fform">
+      <form class="fform" id="franchise-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="submitFranchise(event)">
+        <input type="hidden" name="_subject" value="Franchise Inquiry — Crispy &amp; Crunch">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
         <h3>Franchise Inquiry</h3>
         <div class="frow">
-          <div class="ffield"><label>Full Name</label><input type="text" placeholder="Your name"></div>
-          <div class="ffield"><label>Phone Number</label><input type="tel" placeholder="Mobile number"></div>
+          <div class="ffield"><label for="fr-name">Full Name</label><input id="fr-name" name="name" type="text" placeholder="Your name" required autocomplete="name"></div>
+          <div class="ffield"><label for="fr-phone">Phone Number</label><input id="fr-phone" name="phone" type="tel" placeholder="Mobile number" required autocomplete="tel" inputmode="tel"></div>
         </div>
-        <div class="ffield"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="ffield"><label for="fr-email">Email Address</label><input id="fr-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email"></div>
         <div class="frow">
-          <div class="ffield"><label>City / Location</label><input type="text" placeholder="City for franchise"></div>
-          <div class="ffield"><label>Investment Budget</label><select><option>Select Budget</option><option>₹5L - ₹10L</option><option>₹10L - ₹20L</option><option>₹20L - ₹50L</option><option>₹50L+</option></select></div>
+          <div class="ffield"><label for="fr-city">City / Location</label><input id="fr-city" name="city" type="text" placeholder="City for franchise" required></div>
+          <div class="ffield"><label for="fr-budget">Investment Budget</label><select id="fr-budget" name="budget" required><option value="">Select Budget</option><option>₹5L - ₹10L</option><option>₹10L - ₹20L</option><option>₹20L - ₹50L</option><option>₹50L+</option></select></div>
         </div>
-        <div class="ffield"><label>Message</label><textarea rows="3" placeholder="Tell us about your interest..."></textarea></div>
-        <button class="fsub" type="button" onclick="submitFranchise()">Submit Inquiry 🚀</button>
-      </div>
+        <div class="ffield"><label for="fr-message">Message</label><textarea id="fr-message" name="message" rows="3" placeholder="Tell us about your interest..."></textarea></div>
+        <button class="fsub" type="submit" id="fr-submit">Submit Inquiry 🚀</button>
+        <p id="fr-status" class="fr-status loading" role="status" aria-live="polite" hidden></p>
+      </form>
     </div>
   </div>
 </section>
@@ -562,7 +748,7 @@ section{padding:56px 5%}
     <h2 class="stitle">Visit <em>Us Today</em></h2>
     <div class="cgrid">
       <div class="cinfo">
-        <div class="citem"><div class="cicon">📍</div><div><h4>Our Location</h4><p>Opposite SBI Bank, Mahua, Bihar, India</p></div></div>
+        <div class="citem"><div class="cicon">📍</div><div><h4>Our Location</h4><p>Opposite SBI Bank, Samastipur Road, Mahua, Vaishali, Bihar 844122</p></div></div>
         <div class="citem"><div class="cicon">📞</div><div><h4>Call Us</h4><p><a href="tel:9525095200" style="color:var(--yellow);text-decoration:none;font-size:18px;font-weight:800">9525095200</a></p></div></div>
         <div class="citem"><div class="cicon">💬</div><div><h4>WhatsApp Order</h4><p><a href="https://wa.me/919525095200" style="color:#25D366;text-decoration:none;font-weight:700">Chat on WhatsApp →</a></p></div></div>
         <div class="citem"><div class="cicon">🕐</div><div><h4>Opening Hours <span class="openbadge">Open Now</span></h4><div class="hrow"><span class="hday">Monday - Friday</span><span class="htime">10 AM – 11 PM</span></div><div class="hrow"><span class="hday">Saturday - Sunday</span><span class="htime">10 AM – 12 AM</span></div></div></div>
@@ -570,17 +756,17 @@ section{padding:56px 5%}
       <div class="mbox" style="padding:0;align-items:stretch">
         <iframe
           title="Crispy & Crunch location on Google Maps"
-          src="https://www.google.com/maps?q=Opposite+SBI+Bank+Mahua+Bihar&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3591.7211741944957!2d85.39555098455901!3d25.812771248030128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed6f28794aa0d7%3A0xdbe1cc0cd75c8131!2sCrispy%20%26%20Crunch!5e0!3m2!1sen!2sus!4v1780586049626!5m2!1sen!2sus"
           width="100%"
-          height="280"
+          height="320"
           style="border:0;border-radius:10px 10px 0 0"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
         <div style="padding:20px 24px;width:100%">
         <h3>Crispy & Crunch, Mahua</h3>
-        <p>Opposite SBI Bank, Mahua, Bihar<br>Easily accessible by road</p>
-        <a href="https://maps.google.com/?q=Opposite+SBI+Bank+Mahua+Bihar+India" class="mlink" target="_blank" rel="noopener noreferrer">Open in Google Maps 📍</a>
+        <p>Opposite SBI Bank, Samastipur Road<br>Mahua, Vaishali, Bihar 844122</p>
+        <a href="https://maps.app.goo.gl/x3w9rtaTVv7gx7bh8" class="mlink" target="_blank" rel="noopener noreferrer">Open in Google Maps 📍</a>
         </div>
       </div>
     </div>
@@ -602,8 +788,8 @@ section{padding:56px 5%}
         </div>
       </div>
       <div class="fcol"><h4>Quick Links</h4><ul><li><a href="#hero">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#offers">Offers</a></li><li><a href="#about">About Us</a></li><li><a href="#franchise">Franchise</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div class="fcol"><h4>Menu</h4><ul><li><a href="#menu">Fried Chicken</a></li><li><a href="#menu">Burgers</a></li><li><a href="#menu">Pizza</a></li><li><a href="#menu">Momos</a></li><li><a href="#menu">Beverages</a></li><li><a href="#menu">Combos</a></li></ul></div>
-      <div class="fcol"><h4>Contact</h4><div class="fcline">📍 Opp. SBI Bank, Mahua, Bihar</div><div class="fcline">📞 <a href="tel:9525095200" style="color:var(--yellow);text-decoration:none">9525095200</a></div><div class="fcline">💬 <a href="https://wa.me/919525095200" style="color:#25D366;text-decoration:none">WhatsApp Order</a></div><div style="margin-top:10px;background:rgba(245,197,24,0.09);border:1px solid rgba(245,197,24,0.25);border-radius:7px;padding:10px"><div style="font-size:11px;color:var(--yellow);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">🕐 Today's Hours</div><div style="font-size:13px;color:#fff">10:00 AM – 11:00 PM</div></div></div>
+      <div class="fcol"><h4>Menu</h4><ul><li><a href="#menu">Fried Chicken</a></li><li><a href="#menu">Pizza</a></li><li><a href="#menu">Burgers</a></li><li><a href="#menu">Momos</a></li><li><a href="#menu">Value Meals</a></li><li><a href="#menu">Beverages</a></li></ul></div>
+      <div class="fcol"><h4>Contact</h4><div class="fcline">📍 Opp. SBI Bank, Samastipur Road, Mahua, Vaishali, Bihar 844122</div><div class="fcline">📞 <a href="tel:9525095200" style="color:var(--yellow);text-decoration:none">9525095200</a></div><div class="fcline">💬 <a href="https://wa.me/919525095200" style="color:#25D366;text-decoration:none">WhatsApp Order</a></div><div class="fcline">📧 <a href="mailto:crispyandcrunchcafe@gmail.com" style="color:rgba(255,248,240,0.55);text-decoration:none">crispyandcrunchcafe@gmail.com</a></div><div class="fcline">📸 <a href="https://instagram.com/crispyandcrunchcafe" target="_blank" rel="noopener noreferrer" style="color:rgba(255,248,240,0.55);text-decoration:none">@crispyandcrunchcafe</a></div><div style="margin-top:10px;background:rgba(245,197,24,0.09);border:1px solid rgba(245,197,24,0.25);border-radius:7px;padding:10px"><div style="font-size:11px;color:var(--yellow);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">🕐 Today's Hours</div><div style="font-size:13px;color:#fff">10:00 AM – 11:00 PM</div></div></div>
     </div>
     <div class="fbot">
       <div class="fcopy">© 2026 Crispy & Crunch. All rights reserved. | Mahua, Bihar, India</div>
@@ -612,24 +798,384 @@ section{padding:56px 5%}
   </div>
 </footer>
 
-<a href="https://wa.me/919525095200?text=Hi! I want to order from Crispy %26 Crunch" class="wa-float" title="Order on WhatsApp">💬</a>
+<a href="https://wa.me/919525095200?text=Hi! I want to order from Crispy %26 Crunch" class="wa-float" title="Order on WhatsApp" id="wa-float">💬</a>
+
+<div id="cart-widget" class="cart-widget" hidden>
+  <div class="cart-bar" onclick="toggleCartPanel()">
+    <span class="cart-bar-icon" aria-hidden="true">🛒</span>
+    <span class="cart-bar-text" id="cart-bar-text">0 items</span>
+    <button type="button" class="cart-bar-wa" onclick="event.stopPropagation();orderWhatsApp()">WhatsApp</button>
+  </div>
+  <div id="cart-panel" class="cart-panel" hidden>
+    <div class="cart-panel-head">
+      <span>Your order</span>
+      <button type="button" onclick="toggleCartPanel()" aria-label="Close cart">✕</button>
+    </div>
+    <ul id="cart-list" class="cart-list"></ul>
+    <div class="cart-panel-foot">
+      <div class="cart-panel-total" id="cart-panel-total">₹0</div>
+      <button type="button" class="cart-send" onclick="orderWhatsApp()">Send order on WhatsApp</button>
+      <button type="button" class="cart-clear-btn" onclick="clearCart()">Clear cart</button>
+    </div>
+  </div>
+</div>
+
+<div id="size-picker" class="size-picker-overlay" hidden onclick="if(event.target===this)closeSizePicker()">
+  <div class="size-picker-box" role="dialog" aria-modal="true" aria-labelledby="size-picker-title">
+    <h4 id="size-picker-title">Choose pizza size</h4>
+    <p class="size-picker-sub" id="size-picker-name"></p>
+    <div id="size-picker-options" class="size-picker-options"></div>
+    <button type="button" class="size-picker-cancel" onclick="closeSizePicker()">Cancel</button>
+  </div>
+</div>
 
 <script>
+var FOOD_PHOTOS = {
+  chicken: 'assets/menu/chicken.jpg',
+  strips: 'assets/menu/strips.jpg',
+  samosa: 'assets/menu/samosa.jpg',
+  'cold-coffee': 'assets/menu/cold-coffee.jpg',
+  roll: 'assets/menu/roll.jpg',
+  burger: 'assets/menu/burger.jpg',
+  sandwich: 'assets/menu/sandwich.jpg',
+  pizza: 'assets/menu/pizza.jpg',
+  spicy: 'assets/menu/spicy.jpg',
+  momos: 'assets/menu/momos.jpg',
+  fries: 'assets/menu/fries.jpg',
+  noodles: 'assets/menu/noodles.jpg',
+  hotdog: 'assets/menu/hotdog.jpg',
+  tea: 'assets/menu/tea.jpg',
+  coffee: 'assets/menu/cold-coffee.jpg',
+  mojito: 'assets/menu/mojito.jpg',
+  soda: 'assets/menu/soda.jpg',
+  water: 'assets/menu/soda.jpg',
+  cheese: 'assets/menu/cheese.jpg',
+  toppings: 'assets/menu/pizza.jpg',
+  bucket: 'assets/menu/chicken.jpg',
+  meal: 'assets/menu/meal.jpg'
+};
+function foodPhoto(type) {
+  return FOOD_PHOTOS[type] || FOOD_PHOTOS.chicken;
+}
+function iconTypeFromName(name) {
+  var n = name.toLowerCase().replace(/[^\w\s]/g, ' ');
+  if (n.indexOf('strip') >= 0) return 'strips';
+  if (n.indexOf('samosa') >= 0) return 'samosa';
+  if (n.indexOf('cold coffee') >= 0) return 'cold-coffee';
+  if (n.indexOf('mojito') >= 0) return 'mojito';
+  if (n.indexOf('mineral water') >= 0 || n.indexOf('water') >= 0) return 'water';
+  if (n.indexOf('soft drink') >= 0) return 'soda';
+  if (n.indexOf('tea') >= 0) return 'tea';
+  if (n.indexOf('coffee') >= 0) return 'coffee';
+  if (n.indexOf('roll') >= 0) return 'roll';
+  if (n.indexOf('momos') >= 0) return 'momos';
+  if (n.indexOf('noodle') >= 0) return 'noodles';
+  if (n.indexOf('hot dog') >= 0) return 'hotdog';
+  if (n.indexOf('fries') >= 0) return 'fries';
+  if (n.indexOf('burger') >= 0) return 'burger';
+  if (n.indexOf('sandwich') >= 0 || n.indexOf(' corn') >= 0) return 'sandwich';
+  if (n.indexOf('extra cheese') >= 0) return 'cheese';
+  if (n.indexOf('extra topping') >= 0) return 'toppings';
+  if (n.indexOf('saving meal') >= 0) return 'meal';
+  if (n.indexOf('8pcs') >= 0) return 'bucket';
+  if (n.indexOf('fried chicken') >= 0 || n.indexOf('pcs fried') >= 0) return 'chicken';
+  if (n.indexOf('peri peri') >= 0 || n.indexOf('tandoori') >= 0) return 'spicy';
+  if (n.indexOf('farmhouse') >= 0 || n.indexOf('margherita') >= 0 || n.indexOf('cheese corn') >= 0 || n.indexOf('paneer') >= 0 || n.indexOf('afgani') >= 0) return 'pizza';
+  return 'chicken';
+}
+function initFoodPhotos() {
+  document.querySelectorAll('.mitem').forEach(function(item) {
+    if (item.querySelector('.mphoto')) return;
+    var nameEl = item.querySelector('.mname');
+    if (!nameEl) return;
+    var type = iconTypeFromName(nameEl.textContent);
+    var src = foodPhoto(type);
+    var photo = document.createElement('div');
+    photo.className = 'mphoto';
+    photo.innerHTML = '<img src="' + src + '" alt="" loading="lazy" decoding="async">';
+    var iconEl = item.querySelector('.micon');
+    if (iconEl) iconEl.remove();
+    item.insertBefore(photo, item.firstChild);
+    var minfo = item.querySelector('.minfo');
+    var mright = item.querySelector('.mright');
+    if (minfo && mright && !item.querySelector('.mbody')) {
+      var body = document.createElement('div');
+      body.className = 'mbody';
+      item.insertBefore(body, minfo);
+      body.appendChild(minfo);
+      body.appendChild(mright);
+    }
+  });
+  document.querySelectorAll('.fcard').forEach(function(card) {
+    var imgEl = card.querySelector('.fcard-img');
+    var nameEl = card.querySelector('.fcard-body h3');
+    if (!imgEl || !nameEl || imgEl.querySelector('img')) return;
+    var badges = '';
+    imgEl.querySelectorAll('.fbadge, .nv-dot, .v-dot').forEach(function(b) { badges += b.outerHTML; });
+    var type = iconTypeFromName(nameEl.textContent);
+    imgEl.innerHTML = '<img src="' + foodPhoto(type) + '" alt="" loading="eager" decoding="async">' + badges;
+  });
+}
 function showMenu(cat, btn) {
   document.querySelectorAll('.mgrid').forEach(function(el){el.classList.remove('show')});
   document.querySelectorAll('.cat-btn').forEach(function(el){el.classList.remove('active')});
   document.getElementById('m-' + cat).classList.add('show');
   btn.classList.add('active');
 }
-function addCart(btn) {
+var CART_KEY = 'cc_cart';
+var WA_PHONE = '919525095200';
+
+function loadCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
+  catch (e) { return []; }
+}
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+function parsePrice(text) {
+  if (!text) return { label: 'MRP', amount: null };
+  var t = text.replace(/\s+/g, ' ').trim();
+  if (/^MRP$/i.test(t) || t.indexOf('MRP') !== -1) return { label: 'MRP', amount: null };
+  var m = t.match(/₹\s*([\d,]+)/);
+  if (m) return { label: '₹' + m[1], amount: parseInt(m[1].replace(/,/g, ''), 10) };
+  return { label: t, amount: null };
+}
+function getItemFromButton(btn) {
+  var root = btn.closest('.mitem, .fcard, .ocard');
+  if (!root) return null;
+  var nameEl = root.querySelector('.mname, .fcard-body h3, .otitle');
+  if (!nameEl) return null;
+  var name = nameEl.textContent.replace(/\s+/g, ' ').trim();
+  var priceEl = root.querySelector('.mprice, .fprice, .oprice');
+  var priceInfo = parsePrice(priceEl ? priceEl.textContent : '');
+  return { id: name.toLowerCase(), name: name, priceLabel: priceInfo.label, price: priceInfo.amount };
+}
+function cartTotals(cart) {
+  var items = 0, total = 0, hasMrp = false;
+  cart.forEach(function(item) {
+    items += item.qty;
+    if (item.price) total += item.price * item.qty;
+    else hasMrp = true;
+  });
+  return { items: items, total: total, hasMrp: hasMrp };
+}
+function updateCartUI() {
+  var cart = loadCart();
+  var widget = document.getElementById('cart-widget');
+  var list = document.getElementById('cart-list');
+  var barText = document.getElementById('cart-bar-text');
+  var panelTotal = document.getElementById('cart-panel-total');
+  var totals = cartTotals(cart);
+  if (!cart.length) {
+    widget.hidden = true;
+    document.getElementById('cart-panel').hidden = true;
+    return;
+  }
+  widget.hidden = false;
+  var barLabel = totals.items + (totals.items === 1 ? ' item' : ' items');
+  if (totals.total > 0) barLabel += ' · ₹' + totals.total;
+  else if (totals.hasMrp) barLabel += ' · + MRP';
+  barText.textContent = barLabel;
+  list.innerHTML = '';
+  cart.forEach(function(item, idx) {
+    var li = document.createElement('li');
+    li.className = 'cart-line';
+    var lineTotal = item.price ? '₹' + (item.price * item.qty) : item.priceLabel;
+    li.innerHTML =
+      '<div class="cart-line-info"><div class="cart-line-name">' + escapeHtml(item.name) + '</div>' +
+      '<div class="cart-line-price">' + escapeHtml(item.priceLabel) + (item.qty > 1 ? ' each · ' + lineTotal : '') + '</div></div>' +
+      '<div class="cart-qty">' +
+      '<button type="button" aria-label="Decrease" onclick="changeCartQty(' + idx + ',-1)">−</button>' +
+      '<span>' + item.qty + '</span>' +
+      '<button type="button" aria-label="Increase" onclick="changeCartQty(' + idx + ',1)">+</button>' +
+      '</div>';
+    list.appendChild(li);
+  });
+  var totalHtml = totals.total > 0 ? '₹' + totals.total : '—';
+  if (totals.hasMrp) {
+    totalHtml += '<small>' + (totals.total > 0 ? 'Plus MRP items at checkout' : 'Some items priced at MRP') + '</small>';
+  }
+  panelTotal.innerHTML = totalHtml;
+}
+function toggleCartPanel() {
+  var panel = document.getElementById('cart-panel');
+  if (!loadCart().length) { panel.hidden = true; return; }
+  panel.hidden = !panel.hidden;
+}
+function escapeHtml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function changeCartQty(index, delta) {
+  var cart = loadCart();
+  if (!cart[index]) return;
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) cart.splice(index, 1);
+  saveCart(cart);
+  updateCartUI();
+}
+function clearCart() {
+  saveCart([]);
+  updateCartUI();
+}
+function buildWhatsAppOrder() {
+  var cart = loadCart();
+  if (!cart.length) return '';
+  var totals = cartTotals(cart);
+  var lines = [
+    'Hi! I\'d like to order from *Crispy & Crunch*, Mahua:',
+    ''
+  ];
+  cart.forEach(function(item) {
+    var line = '• ' + item.qty + '× ' + item.name + ' — ' + item.priceLabel;
+    if (item.qty > 1 && item.price) line += ' (₹' + (item.price * item.qty) + ')';
+    lines.push(line);
+  });
+  lines.push('');
+  if (totals.total > 0) {
+    lines.push('*Estimated total:* ₹' + totals.total + (totals.hasMrp ? ' + MRP items' : ''));
+  } else if (totals.hasMrp) {
+    lines.push('*Note:* Some items are at MRP');
+  }
+  lines.push('');
+  lines.push('Name: ');
+  lines.push('Delivery / Pickup: ');
+  return lines.join('\n');
+}
+function orderWhatsApp() {
+  var text = buildWhatsAppOrder();
+  if (!text) return;
+  window.open('https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+}
+function flashAdded(btn) {
   var orig = btn.textContent;
   var origBg = btn.style.background;
-  btn.textContent = '✓ Added!';
+  btn.textContent = '✓';
   btn.style.background = '#4CAF50';
   setTimeout(function() {
     btn.textContent = orig;
     btn.style.background = origBg;
-  }, 1400);
+  }, 900);
+}
+var sizePickerBtn = null;
+function parseSizesFromMsizes(el) {
+  var sizes = [];
+  var re = /(\d+)"\s*₹\s*([\d,]+)/g;
+  var m;
+  while ((m = re.exec(el.textContent))) {
+    sizes.push({ size: m[1] + '"', price: parseInt(m[2].replace(/,/g, ''), 10) });
+  }
+  return sizes;
+}
+function getItemNameFromRoot(root) {
+  var nameEl = root.querySelector('.mname, .fcard-body h3, .otitle');
+  return nameEl ? nameEl.textContent.replace(/\s+/g, ' ').trim() : '';
+}
+function addToCartItem(name, price, priceLabel) {
+  var id = name.toLowerCase();
+  var cart = loadCart();
+  var existing = cart.find(function(i) { return i.id === id; });
+  if (existing) existing.qty += 1;
+  else cart.push({ id: id, name: name, priceLabel: priceLabel || ('₹' + price), price: price, qty: 1 });
+  saveCart(cart);
+  updateCartUI();
+}
+function openSizePicker(btn, name, sizes) {
+  sizePickerBtn = btn;
+  var isAddon = /extra/i.test(name);
+  document.getElementById('size-picker-title').textContent = isAddon ? 'Choose size' : 'Choose pizza size';
+  document.getElementById('size-picker-name').textContent = name;
+  var opts = document.getElementById('size-picker-options');
+  opts.innerHTML = '';
+  sizes.forEach(function(s) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'size-opt';
+    b.innerHTML = '<span>' + s.size + (isAddon ? '' : ' pizza') + '</span><span class="size-opt-price">₹' + s.price + '</span>';
+    b.onclick = function() { pickSize(name, s.size, s.price); };
+    opts.appendChild(b);
+  });
+  document.getElementById('size-picker').hidden = false;
+}
+function closeSizePicker() {
+  document.getElementById('size-picker').hidden = true;
+  sizePickerBtn = null;
+}
+function pickSize(name, size, price) {
+  addToCartItem(name + ' (' + size + ')', price, '₹' + price);
+  if (sizePickerBtn) flashAdded(sizePickerBtn);
+  closeSizePicker();
+  document.getElementById('cart-panel').hidden = false;
+}
+function addCart(btn) {
+  var root = btn.closest('.mitem, .fcard, .ocard');
+  if (!root) return;
+  var sizesEl = root.querySelector('.msizes');
+  if (sizesEl) {
+    var sizes = parseSizesFromMsizes(sizesEl);
+    if (sizes.length) {
+      openSizePicker(btn, getItemNameFromRoot(root), sizes);
+      return;
+    }
+  }
+  if (root.classList.contains('pizza-mini')) {
+    var miniName = getItemNameFromRoot(root);
+    var miniPrice = parsePrice(root.querySelector('.mprice').textContent);
+    addToCartItem(miniName + ' (Mini 6")', miniPrice.amount, miniPrice.label);
+    flashAdded(btn);
+    document.getElementById('cart-panel').hidden = false;
+    return;
+  }
+  var item = getItemFromButton(btn);
+  if (!item) return;
+  addToCartItem(item.name, item.price, item.priceLabel);
+  flashAdded(btn);
+  document.getElementById('cart-panel').hidden = false;
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSizePicker();
+});
+updateCartUI();
+initFoodPhotos();
+function showFrStatus(msg, type) {
+  var el = document.getElementById('fr-status');
+  el.hidden = false;
+  el.textContent = msg;
+  el.className = 'fr-status ' + (type || '');
+}
+function submitFranchise(e) {
+  e.preventDefault();
+  var form = document.getElementById('franchise-form');
+  if (!form.reportValidity()) return;
+  var endpoint = (form.getAttribute('action') || '').split('?')[0];
+  if (!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1) {
+    showFrStatus('Paste your Formspree endpoint in the form action (search for YOUR_FORM_ID in index.html).', 'err');
+    return;
+  }
+  var btn = document.getElementById('fr-submit');
+  btn.disabled = true;
+  showFrStatus('Sending your inquiry…', 'loading');
+  fetch(endpoint, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+    .then(function(res) {
+      return res.json().then(function(data) {
+        if (res.ok) {
+          showFrStatus('Thank you! We received your inquiry and will contact you soon.', 'ok');
+          form.reset();
+          return;
+        }
+        var msg = (data && data.error) ? data.error : 'Could not send. Try again or WhatsApp us at 9525095200.';
+        showFrStatus(msg, 'err');
+      });
+    })
+    .catch(function() {
+      showFrStatus('Network error. Check your connection or message us on WhatsApp.', 'err');
+    })
+    .finally(function() {
+      btn.disabled = false;
+    });
 }
 window.addEventListener('scroll', function() {
   document.querySelector('nav').style.borderBottomColor = window.scrollY > 40 ? 'rgba(232,32,26,0.4)' : 'rgba(232,32,26,0.25)';
