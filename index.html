@@ -273,6 +273,8 @@ footer{background:var(--ink);color:rgba(251,245,236,.7);padding:64px 0 32px}
 .wa-float{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:var(--wa);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(31,175,85,.4);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
 .wa-float .icon{width:26px;height:26px}
+.table-bar{background:var(--red);color:#fff;text-align:center;font-size:15px;padding:12px 20px;line-height:1.4}
+.table-bar b{font-family:var(--head);font-size:17px}
 .cart-widget{position:fixed;bottom:92px;right:24px;z-index:998;width:min(340px,calc(100vw - 24px))}
 .cart-bar{display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 8px 8px 18px;box-shadow:var(--shadow);cursor:pointer}
 .cart-bar-text{flex:1;font-size:14px;font-weight:700}
@@ -409,6 +411,7 @@ section{padding:72px 0}
     <a href="#visit" onclick="toggleMobMenu(false)">Visit</a>
     <a href="#order" onclick="toggleMobMenu(false)">Order now</a>
   </div>
+  <div class="table-bar" id="table-bar" hidden>Dine-in · <b id="table-bar-no"></b> · Tap + to add items, then send your order on WhatsApp.</div>
 </nav>
 
 <main id="top">
@@ -926,7 +929,11 @@ function buildWhatsAppOrder() {
   var cart = loadCart();
   if (!cart.length) return '';
   var totals = cartTotals(cart);
-  var lines = [
+  var lines = dineInTable ? [
+    '*DINE-IN · TABLE ' + dineInTable + '*',
+    'Order from the table at Crispy & Crunch, Mahua:',
+    ''
+  ] : [
     'Hi! I\'d like to order from *Crispy & Crunch*, Mahua:',
     ''
   ];
@@ -943,7 +950,7 @@ function buildWhatsAppOrder() {
   }
   lines.push('');
   lines.push('Name: ');
-  lines.push('Delivery / Pickup: ');
+  if (!dineInTable) lines.push('Delivery / Pickup: ');
   return lines.join('\n');
 }
 function orderWhatsApp() {
@@ -1042,6 +1049,22 @@ function addCart(btn) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeSizePicker();
 });
+var TABLE_KEY = 'cc_table';
+var dineInTable = (function() {
+  var t = new URLSearchParams(location.search).get('table');
+  try {
+    if (t) sessionStorage.setItem(TABLE_KEY, t);
+    else t = sessionStorage.getItem(TABLE_KEY);
+  } catch (e) {}
+  return t && /^[A-Za-z0-9-]{1,6}$/.test(t) ? t : null;
+})();
+if (dineInTable) {
+  document.getElementById('table-bar-no').textContent = 'Table ' + dineInTable;
+  document.getElementById('table-bar').hidden = false;
+  if (new URLSearchParams(location.search).get('table') && !location.hash) {
+    window.addEventListener('load', function() { document.getElementById('menu').scrollIntoView(); });
+  }
+}
 updateCartUI();
 updateOpenBadge();
 function showFrStatus(msg, type) {
